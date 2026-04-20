@@ -1,0 +1,11 @@
+# Ignora arquivos de configuração específicos
+argo.txt
+argo.yaml
+kustomization.yaml
+kustomization.txt
+
+# Ignora qualquer arquivo txt na pasta
+*.txt
+
+# Ignora arquivos markdown de anotação
+README.md
