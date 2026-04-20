@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  fastapi-service
+  namespace:  mentor-project
+spec:
+  selector:
+    app: fastapi-app
+  type:  NodePort
+  ports:
+  - protocol: TCP
+    port:  80
+    targetPort:  8008
+    nodePort:  30080

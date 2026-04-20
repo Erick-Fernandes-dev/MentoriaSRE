@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastapi-gitops
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Erick-Fernandes-dev/MentoriaSRE.git'
+    targetRevision: HEAD
+    path: . # Pasta onde os YAMLs estão no repositório
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: mentor-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true # O ArgoCD vai forçar o cluster a ser idêntico ao Git

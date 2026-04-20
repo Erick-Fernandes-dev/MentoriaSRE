@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  fastapi-deployment
+  namespace:  mentor-project
+  labels:
+    name:  fastapi-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+      - name: fastapi-container
+        image: erickwolf/fastapi-k8s:v1 # Coloque sua imagem aqui
+        ports:
+        - containerPort: 8008
+        resources: {}
