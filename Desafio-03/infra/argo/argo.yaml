@@ -9,6 +9,8 @@ spec:
     repoURL: 'https://github.com/Erick-Fernandes-dev/MentoriaSRE.git'
     targetRevision: HEAD
     path: . # Pasta onde os YAMLs estão no repositório
+    directory:
+      recurse: true # É isso que ativa a recursividade via código!
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: mentor-project
