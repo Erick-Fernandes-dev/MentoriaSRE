@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fastapi-hpa
+  namespace: mentor-project
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fastapi-deployment # Tem que ser o mesmo nome do seu Deployment
+  minReplicas: 2             # Nunca vai ter menos que 2 pods rodando
+  maxReplicas: 10            # Nunca vai passar de 10 pods
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50 # Se a CPU média dos pods passar de 50%, ele cria mais pods!

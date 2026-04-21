@@ -6,7 +6,7 @@ metadata:
   labels:
     name:  fastapi-app
 spec:
-  replicas: 5
+  #replicas: 5
   selector:
     matchLabels:
       app: fastapi-app
@@ -20,4 +20,10 @@ spec:
         image: erickwolf/fastapi-k8s:v1 # Coloque sua imagem aqui
         ports:
         - containerPort: 8008
-        resources: {}
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
